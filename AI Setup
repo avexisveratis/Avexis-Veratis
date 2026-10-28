@@ -1,10 +1,20 @@
 # First thing is getting the model backend!
 
 The code I am going to be using is for WSL2, but if there is any Powershell, I will point it out.
-First thing I noticed when I initially did this, it didn't detect the CUDA libraries of my GPU. The easiest way to tell is by using this code:
+First thing I noticed when I initially did this, it didn't detect the CUDA libraries of my GPU. I ran this code to install the build tools and CUDA tookkit.
+
+'sudo apt update && sudo apt install -y git build-essential nvidia-cuda-toolkit python3 python3-pip'
+
+The easiest way to tell it is connected to CUDA is by using this code:
 
 'nvidia-smi' (may be different depending on your own GPU)
 
 Next thing you would want to do is install the build dependencies.
 
 'sudo apt update && sudo apt install -y git build-essential libopenblas-dev'
+'git clone https://github.com/LostRuins/koboldcpp.git'
+'make LLAMA_CUDA=1' <!--Compiles CUDA support-->
+
+One thing I learned is since this is a WSL2 VM of Ubuntu, you can access your files directly through /mnt/c/ (handy because the model was already installed on my PC).
+
+'python3 koboldcpp.py --model /mnt/c/AI/MN-12B-Celeste-V1.9-Q4_K_M.gguf
