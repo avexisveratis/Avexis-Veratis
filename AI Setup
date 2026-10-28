@@ -1,1 +1,10 @@
+# First thing is getting the model backend!
 
+The code I am going to be using is for WSL2, but if there is any Powershell, I will point it out.
+First thing I noticed when I initially did this, it didn't detect the CUDA libraries of my GPU. The easiest way to tell is by using this code:
+
+'nvidia-smi' (may be different depending on your own GPU)
+
+Next thing you would want to do is install the build dependencies.
+
+'sudo apt update && sudo apt install -y git build-essential libopenblas-dev'
